@@ -12,11 +12,137 @@
     />
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --theme-color: #407BFF;
+            --navbar-font-color: #ffffff;
+        }
+        body, .navbar, .btn, .form-control, .nav-link, .navbar-brand span, h1, p {
+            font-family: 'Ubuntu', sans-serif !important;
+        }
+        .navbar, .btn-primary, .btn-outline-success {
+            background-color: var(--theme-color) !important;
+            border-color: var(--theme-color) !important;
+        }
+        .navbar .nav-link, .navbar-brand {
+            color: var(--navbar-font-color) !important;
+        }
+        .btn-outline-success {
+            color: white !important;
+        }
+        .btn-outline-success:hover {
+            background-color: var(--theme-color) !important;
+            color: white !important;
+        }
+        .form-control, .btn-primary {
+            color: white !important;
+        }
+        .form-control::placeholder {
+            color: white !important;
+        }
+        .form-control {
+            color: black !important;
+        }
+        .navbar-brand span {
+            font-weight: 700;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: var(--theme-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            font-weight: bold;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .form-check-input {
+            margin-right: 10px;
+        }
+        .form-check-label {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .form-check-label:hover {
+            background-color: #f0f0f0;
+        }
+        .btn-primary {
+            background-color: var(--theme-color) !important;
+            border-color: var(--theme-color) !important;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1e5cce !important;
+        }
+        .quiz-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--theme-color);
+            margin-bottom: 1rem;
+        }
+        .quiz-description {
+            font-size: 1.25rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 2rem;
+        }
+        footer {
+            background-color: var(--theme-color);
+            color: white;
+            padding: 40px 0;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+        footer .nav-link {
+            color: white !important;
+        }
+        footer .nav-link:hover {
+            text-decoration: underline;
+        }
+        footer .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+        footer .social-icons a:hover {
+            color: #d1d1d1;
+        }
+        footer .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+        }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container">
-        <a class="navbar-brand" href="#">BrainBunny</a>
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="C:\Users\Apurb\OneDrive\Desktop\brainybean\icon\Logo.png" alt="BrainBean Logo" width="40" height="40" class="d-inline-block align-text-top">
+          <span class="ms-2">BrainyBean</span>
+        </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -57,81 +183,61 @@
               </ul>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-            <a class="btn btn-primary ms-2" href="#">Login</a>
-          </form>
+          <div class="dropdown ms-auto">
+            <a class="btn btn-primary" href="#" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="C:\Users\Apurb\OneDrive\Desktop\brainybean\icon\account.png" alt="Profile" width="40" height="40" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sign Out</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
 
-    <h1 class="display-4 text-center my-5">JAVA FX - (10)</h1>
-    <p class="fs-4 text-center">
-      These are the questions about javafx scene building
-    </p>
+    <div class="container text-center my-5">
+        <h1 class="quiz-title">JAVA FX - (10)</h1>
+        <p class="quiz-description">
+            These are the questions about javafx scene building
+        </p>
+        <div class="quiz-info">
+            <span>Jan 08, 2024 6:36 PM</span>
+            <span>10:00</span>
+        </div>
+    </div>
 
     <div class="container">
-      <div class="d-flex justify-content-between">
-        <span class="fs-5">Jan 08, 2024 6:36 PM</span>
-        <span class="fs-5">10:00</span>
-      </div>
-
       <div class="questions my-4">
         <div class="card">
-          <div class="card-header fw-bold">Question 1</div>
+          <div class="card-header">Question 1</div>
           <div class="card-body">
             <p class="card-text">
-              What is the app we use to buid javafx scenes?
+              What is the app we use to build javafx scenes?
             </p>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
                 1 Photoshop
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                />
                 2 Scenebuilder
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3">
               <label class="form-check-label" for="flexRadioDefault3">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault3"
-                />
                 3 Figma
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4">
               <label class="form-check-label" for="flexRadioDefault4">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault4"
-                />
                 4 Blender
               </label>
             </div>
@@ -140,52 +246,32 @@
       </div>
       <div class="questions my-4">
         <div class="card">
-          <div class="card-header fw-bold">Question 1</div>
+          <div class="card-header">Question 1</div>
           <div class="card-body">
             <p class="card-text">
-              What is the app we use to buid javafx scenes?
+              What is the app we use to build javafx scenes?
             </p>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
                 1 Photoshop
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                />
                 2 Scenebuilder
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3">
               <label class="form-check-label" for="flexRadioDefault3">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault3"
-                />
                 3 Figma
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4">
               <label class="form-check-label" for="flexRadioDefault4">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault4"
-                />
                 4 Blender
               </label>
             </div>
@@ -194,52 +280,32 @@
       </div>
       <div class="questions my-4">
         <div class="card">
-          <div class="card-header fw-bold">Question 1</div>
+          <div class="card-header">Question 1</div>
           <div class="card-body">
             <p class="card-text">
-              What is the app we use to buid javafx scenes?
+              What is the app we use to build javafx scenes?
             </p>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
                 1 Photoshop
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                />
                 2 Scenebuilder
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3">
               <label class="form-check-label" for="flexRadioDefault3">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault3"
-                />
                 3 Figma
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4">
               <label class="form-check-label" for="flexRadioDefault4">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault4"
-                />
                 4 Blender
               </label>
             </div>
@@ -248,52 +314,32 @@
       </div>
       <div class="questions my-4">
         <div class="card">
-          <div class="card-header fw-bold">Question 1</div>
+          <div class="card-header">Question 1</div>
           <div class="card-body">
             <p class="card-text">
-              What is the app we use to buid javafx scenes?
+              What is the app we use to build javafx scenes?
             </p>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
                 1 Photoshop
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                />
                 2 Scenebuilder
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3">
               <label class="form-check-label" for="flexRadioDefault3">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault3"
-                />
                 3 Figma
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4">
               <label class="form-check-label" for="flexRadioDefault4">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault4"
-                />
                 4 Blender
               </label>
             </div>
@@ -302,52 +348,32 @@
       </div>
       <div class="questions my-4">
         <div class="card">
-          <div class="card-header fw-bold">Question 1</div>
+          <div class="card-header">Question 1</div>
           <div class="card-body">
             <p class="card-text">
-              What is the app we use to buid javafx scenes?
+              What is the app we use to build javafx scenes?
             </p>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
                 1 Photoshop
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                />
                 2 Scenebuilder
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3">
               <label class="form-check-label" for="flexRadioDefault3">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault3"
-                />
                 3 Figma
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4">
               <label class="form-check-label" for="flexRadioDefault4">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault4"
-                />
                 4 Blender
               </label>
             </div>
@@ -356,52 +382,32 @@
       </div>
       <div class="questions my-4">
         <div class="card">
-          <div class="card-header fw-bold">Question 1</div>
+          <div class="card-header">Question 1</div>
           <div class="card-body">
             <p class="card-text">
-              What is the app we use to buid javafx scenes?
+              What is the app we use to build javafx scenes?
             </p>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                />
                 1 Photoshop
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                />
                 2 Scenebuilder
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault3">
               <label class="form-check-label" for="flexRadioDefault3">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault3"
-                />
                 3 Figma
               </label>
             </div>
             <div class="form-check">
+              <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault4">
               <label class="form-check-label" for="flexRadioDefault4">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault4"
-                />
                 4 Blender
               </label>
             </div>
@@ -409,34 +415,33 @@
         </div>
       </div>
 
-      <a href="#" type="submit" class="btn btn-primary">Submit Quiz</a>
-
+      <div class="d-flex justify-content-center my-4">
+        <a href="#" type="submit" class="btn btn-primary">Submit Quiz</a>
+      </div>
 
     </div>
 
-    <footer class="py-3 my-4">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">Features</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">Content</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">FAQs</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">About</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link px-2 text-body-secondary">Feedback</a>
-        </li>
-      </ul>
-      <p class="text-center text-body-secondary">© 2025, BrainBean</p>
+    <footer class="py-2 footer mt-5" style="background-color: #007bff; color: white; position: relative; bottom: 0; width: 100%; margin-top: auto;">
+      <div class="container text-center">
+        <div class="footer-logo mb-2">BrainyBean</div>
+        <ul class="nav justify-content-center pb-2 mb-2">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Content</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Feedback</a></li>
+        </ul>
+        <div class="social-icons mb-2">
+          <a href="#" class="icon-link mx-2 text-light"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="icon-link mx-2 text-light"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="icon-link mx-2 text-light"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="icon-link mx-2 text-light"><i class="bi bi-linkedin"></i></a>
+        </div>
+        <p>© 2025, BrainyBean</p>
+      </div>
     </footer>
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
